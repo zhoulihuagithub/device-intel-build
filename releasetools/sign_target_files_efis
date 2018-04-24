@@ -215,8 +215,8 @@ def process_bootzip(input_bootzip, output_bootzip, passwords):
             print "Processing",path
 
         # Don't bother copying these over
-        if path.startswith("EFI/BOOT/boot") or path == "shim.efi":
-            continue
+#        if path.startswith("EFI/BOOT/boot") or path == "shim.efi":
+#            continue
 
         if OPTIONS.oem_key and path == OPTIONS.kernelflinger:
             print "Replacing keys inside", path
@@ -273,7 +273,7 @@ def process_bootzip(input_bootzip, output_bootzip, passwords):
             if is_32bit_efi(data):
                 output_bootzip.writestr("EFI/BOOT/bootia32.efi", data)
             else:
-                output_bootzip.writestr("EFI/BOOT/bootx64.efi", data)
+#                output_bootzip.writestr("EFI/BOOT/bootx64.efi", data)
                 if OPTIONS.target_product == "coho":
                     output_bootzip.writestr("shim.efi", data)
 
